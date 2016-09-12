@@ -26,12 +26,12 @@
         var meta = data || getMetaData();
         var shareData = {
             'appid': '',
-            'img_url': meta['og:image']||'../photo/share.png',
+            'img_url': meta['og:image']||meta['img_url']||'../photo/share.png',
             'img_width': '100',
             'img_height': '100',
-            'link':meta['og:url']|| location.href,
-            'desc': meta['og:desc']||'现在朋友圈流行这样装逼',
-            'title':meta['og:title']|| '朋友圈大字'
+            'link':meta['og:url']||meta['link']|| location.href,
+            'desc': meta['og:desc']||meta['desc']||'现在朋友圈流行这样装逼',
+            'title':meta['og:title']||meta['title']|| '朋友圈大字'
         };
         return shareData;
     };

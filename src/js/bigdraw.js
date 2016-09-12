@@ -52,10 +52,13 @@
                     vars.setLocalStorage('cvsImageUrl',cbUrl);
                     $('#sin').hide();
                     $('#tin').hide();
-                    $('.dl-rlt').show();
-                    $('.dl-pic').attr('src',orgUrl);
+
+                    //$('.dl-rlt').show(); //test
+                    //$('.dl-pic').attr('src',orgUrl);
                     // var _timer = setTimeout(function () {
+
                         location.href = "rlt.html?url="+ cbUrl;
+
                     // },0);
                 });
             });
@@ -65,7 +68,22 @@
                 var wd  = $('#sin_input').val();
                 draw.drawCanvas(wd,sin); //make photo
             });
+
+            var checkCountChar = function () {
+                var txtAre =  $("#sin_input");
+                var x = txtAre.val().length;
+                if (x >= 10) {
+                    vars.showTip('最多输入10个字符',1000);
+                }
+                return x;
+            };
+
+            $("#sin_input").on('change keyup',function (e) {
+                  checkCountChar();
+            });
+
         }
+
     };
 
     bigdraw.rlt = {
@@ -73,15 +91,17 @@
             var self = this;
             $(function () {
                 FastClick.attach(document.body);
-                var imgdata = vars.getLocalStorage('cvsImageData')|| vars.getParam('url')||'';
-                var imgUrl  = vars.getLocalStorage('cvsImageUrl')|| imgdata;
+                var imgdata = vars.getLocalStorage('cvsImageData')||'';
+                var imgUrl  = vars.getLocalStorage('cvsImageUrl')|| vars.getParam('url') || imgdata;
                 $('.dl-pic').attr('src',imgUrl);
-                self.events(); 
+                self.events();
+                var indexpage = location.href;
+                indexpage = indexpage.replace('rlt.html','index.html');
                 window.initShareEvents({
                     'img_url': imgUrl,
                     'img_width': '100',
                     'img_height': '100',
-                    'link': location.href,
+                    'link': indexpage,
                     'desc': '现在朋友圈流行这样装逼',
                     'title':  '朋友圈大字'
                 } );
