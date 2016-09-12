@@ -1,16 +1,17 @@
 (function (root,$) {
     var vars = root.vars;
     var draw =  root.draw = {};
-    var uploadUrl = 'http://t.m.tv.sohu.com/nodejs/uploadBase64Data';
+    var uploadUrl = '/nodejs/uploadBase64Data';
+    // var uploadUrl = '/sapp/bigdraw/savepic.php';
 
     var data={
          kind:3,
          keywd:"",
          image:[
-              "img/c1.jpg",  //kind=1
-              "img/c2.jpg",  //kind=2
-              "img/c3.jpg",  //kind=3
-              "img/c4.jpg"   //kind=4
+              "img/c1.png",  //kind=1
+              "img/c2.png",  //kind=2
+              "img/c3.png",  //kind=3
+              "img/c4.png"   //kind=4
         ],
         imageList:[],
         qrImage:"img/qr.png" //qrcode img
@@ -24,7 +25,7 @@
         var p = parseInt(data.kind)-1;
         p = p>3?3:p<0?0:p;
 
-        data.imageList[0] =  data.image[p]||"img/c3.jpg";
+        data.imageList[0] =  data.image[p]||"img/c3.png";
         data.imageList[1] = data.qrImage;
 
         var cvs =document.createElement("canvas"),
@@ -85,7 +86,7 @@
                 }
             }else if(kind==4) {
                 x = 320;
-                y = 160;
+                y = 165;
                 if (text.length > 5) {
                     txt1[0] = text.substring(0,5);
                     txt1[1] = text.substring(5);
@@ -147,9 +148,16 @@
     draw.upload = function (kind,base64Data,callback) {
         var xUrl = uploadUrl;
         var submitData={
+            dosubmit:true,
             imgData:base64Data,
-            kind:kind
+            kind:kind,
+            hostname:location.hostname
         };
+        // var submitData={
+        //     dosubmit:true,
+        //     pic:base64Data,
+        //     kind:kind
+        // };
         $.ajax({
             data: submitData,
             url: xUrl,

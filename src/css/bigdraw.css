@@ -43,26 +43,32 @@ h1, h2, h3, h4, h5, h6 {
     width: 100%;
     height: 100%;
     background: url(../img/1.jpg) center top no-repeat;
-    background-size: cover;
+    background-size: 7.20rem 10.80rem;
     z-index: 100;
 }
 
 .btn1 {
     position: absolute;
     display: -webkit-flex;
+    width: 100%;
+    height: 1.31rem;
+    top: 9.59rem;
     justify-content: center;
     align-items: center;
     text-align: center;
-    /*border: 1px solid ;*/
-    opacity: 0.1;
-    width: 100%;
-    height: 25%;
-    bottom: 0;
-    z-index: 200;
+    background-image: url(../img/bt1-1.png);
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: 7.20rem 1.31rem;
+    z-index: 113;
+
+}
+.btn1:hover {
+    background-image: url(../img/bt1-2.png);
 }
 
-/* create */
 
+/* create */
 .page2 {
     width: 100%;
     height: 100%;
@@ -76,20 +82,32 @@ h1, h2, h3, h4, h5, h6 {
     top: 0;
     padding: 0;
     width: 100%;
-    height: 5.04rem;
+    height: 4.02rem;
     margin:0.10rem 0 0 0;
 }
-
+.sin-hd {
+    position: absolute;
+    display: block;
+    left: 0.48rem;
+    top: 0.20rem;
+    width: 1.69rem;
+    height: 1.59rem;
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: 1.69rem 1.59rem;
+    background-image: url(../img/hd.png);
+    z-index: 111;
+}
 .sin {
     position: absolute;
     display: block;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 4.12rem;
+    top: 0.08rem;
+    left: 2.08rem;
+    width: 5.12rem;
+    height: 4.02rem;
     background-position: center top;
     background-repeat: no-repeat;
-    background-size: 7.20rem 4.02rem;
+    background-size: 5.12rem 4.02rem;
     z-index: 110;
 }
 
@@ -130,40 +148,21 @@ h1, h2, h3, h4, h5, h6 {
     display: none;
     left: 3.66rem;
     top: 1.92rem;
-    width: 1.62rem;
-    height: 1.62rem;
+    width: 1.82rem;
+    height: 1.82rem;
     z-index: 230;
-}
-
-.p1 {
-    left: 3.66rem;
-    top: 1.52rem;
-}
-
-.p2 {
-    left: 3.66rem;
-    top: 1.52rem;
-}
-
-.p3 {
-    left: 3.80rem;
-    top: 1.92rem;
-}
-
-.p4 {
-    left: 4.46rem;
-    top: 1.20rem;
+    /*border: 1px solid;*/
 }
 
 .tin textarea {
-    width: 1.62rem;
-    height: 1.62rem;
+    width: 100%;
+    height: 100%;
     margin: 0;
     opacity: 0.8;
     padding: 8px 6px;
     border: 1px solid #ccc;
     border-bottom: 2px solid #bebebe;
-    font: 12px Arial, sans-serif;
+    font: 18px Arial, sans-serif;
     background: #f4f4f4;
     text-rendering: auto;
     color: initial;
@@ -176,10 +175,71 @@ h1, h2, h3, h4, h5, h6 {
     text-align: start;
 }
 
+/*字体位置*/
+.p1 {
+    font: 20px Arial, sans-serif;
+    left: 3.16rem;
+    top: 1.42rem;
+    width: 2.58rem;
+    height: 1.82rem;
+}
+
+.p2 {
+    left: 3.42rem;
+    top: 1.32rem;
+    width: 2.22rem;
+    height: 1.82rem;
+}
+
+.p3 {
+
+    left: 3.54rem;
+    top: 1.82rem;
+    width: 1.80rem;
+    height: 1.80rem;
+}
+
+.p4 {
+    left: 4.26rem;
+    top: 1.18rem;
+    width: 1.80rem;
+    height: 1.80rem;
+}
+
+
 input, select, textarea {
     outline: none;
 }
-
+/* default choice 3*/
+.ys-choice {
+    position: absolute;
+    display: block;
+    width: 0.52rem;
+    height: 0.52rem;
+    left: 5.63rem;
+    top: 4.02rem;
+    background-image: url(../img/choice.png);
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: 0.52rem 0.52rem;
+    z-index: 218;
+}
+.co1 {
+    left: 2.89rem;
+    top: 4.38rem;
+}
+.co2 {
+    left: 2.62rem;
+    top: 6.96rem;
+}
+.co3 {
+    left: 5.63rem;
+    top: 4.02rem;
+}
+.co4 {
+    left: 5.93rem;
+    top: 7.06rem;
+}
 .ys-opts {
     position: absolute;
     left: 0;
@@ -211,7 +271,7 @@ input, select, textarea {
 
 .btn2 {
     position: absolute;
-    display: -webkit-flex;
+    display: block;
     width: 100%;
     height: 1.48rem;
     top: 9.37rem;
@@ -236,7 +296,7 @@ input, select, textarea {
     position: absolute;
     display: block;
     left: 0;
-    top: 0;
+    top: 0.40rem;
     width: 100%;
     height: 5.14rem;
     background-position: center top;
@@ -246,10 +306,11 @@ input, select, textarea {
     background-image: url(../img/3-dl.png);
 }
 
+
 .dl-pic {
     position: absolute;
     display: block;
-    left: 2.22rem;
+    left: 2.26rem;
     top: 0.92rem;
     width: 4.64rem;
     height: 3.67rem;
@@ -276,10 +337,10 @@ input, select, textarea {
 }
 
 .dl-tips {
-    position: relative;
+    position: absolute;
     display: block;
     left: 0rem;
-    top: 5.22rem;
+    top: 5.04rem;
     width: 100%;
     height: 3.36rem;
     background-position: center top;
@@ -294,7 +355,7 @@ input, select, textarea {
     display: -webkit-flex;
     width: 100%;
     height: 1.53rem;
-    top: 9.2rem;
+    top: 8.78rem;
     justify-content: center;
     align-items: center;
     text-align: center;

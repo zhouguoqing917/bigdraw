@@ -41,11 +41,6 @@
         console.log('html fontSize: ',rem);
         docEl.style.fontSize = rem + 'px';
         svp.rem = rem;
-    }
-
-
-    if (isRem) {
-        setRem(); //设置rem字体
         //绑定一次
         var _evt = 'onorientationchange' in window ? 'orientationchange' : 'resize';
         window.addEventListener('pageshow', function(e) {
@@ -61,6 +56,11 @@
         }, false);
     }
 
+
+    if (isRem) {
+        setRem(); //设置rem字体 
+    }
+
     svp.setRem = setRem;
     svp.setViewport = setViewport;
     svp.scale = scale;
@@ -70,5 +70,5 @@
     docEl.setAttribute('data-scale', scale);
     docEl.setAttribute('data-design',designWidth);
     docEl.setAttribute('data-rem',isRem);
- 
+
 }(window));

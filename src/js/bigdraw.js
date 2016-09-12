@@ -36,10 +36,19 @@
             });
 
             $('.ys-opts .ys').on('click', function () {
+                var me =this;
+                var ys = $('.ys');
                 $('#tin').hide();
                 $('.dl-rlt').hide();
                 var slc = $(this).attr('data-sin');
                 var tips = $('#sin');
+                $.each(ys, function (i, v) {
+                    if(v==me){
+                        $(me).addClass('current');
+                     }else{
+                        $(v).removeClass('current');
+                     }
+                 });
 
                 var sinClass=['sin' , 'sin'+slc , 'sin'+slc+'-tips','flipInCardY'].join(' ');
                 tips.attr('class',sinClass);
@@ -54,13 +63,18 @@
                         $(this).removeClass('flipInCardY');
                     });
 
+                $('#ys-choice').removeClass().addClass('ys-choice co'+slc);
+
             });
 
             $(document.body).on('cvsImageData',function(evt,kind, bx64 ){
                 bx64 = bx64 ||  vars.getLocalStorage('cvsImageData');
-                root.draw.upload(kind,bx64,function (data) {
-                    var orgUrl = data.url || bx64;
-                    var cbUrl = data.url || '';
+                root.draw.upload(kind,bx64,function (rt) {
+                    var data = rt && rt.data || "";
+                    var cbUrl= bx64;
+                    if(data && data.url) {
+                        cbUrl = data.url || bx64;
+                    }
                     vars.setLocalStorage('cvsImageUrl',cbUrl);
                     $('#sin').hide();
                     $('#tin').hide();
