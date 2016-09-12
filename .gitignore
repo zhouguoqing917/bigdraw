@@ -3,6 +3,8 @@ node_modules
 dist
 logs
 public/images/canvs*
+public/img/canvs*
+upload/photo/canvs*
 .DS_Store
 .idea
 .idea/*
