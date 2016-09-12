@@ -7,10 +7,8 @@
     "hbs": "~4.0.0",
     "morgan": "~1.7.0",
     "serve-favicon": "~2.3.0"
-  }, 
+  },
   "devDependencies": {
-    "@alrra/travis-scripts": "^1.1.1",
-    "apache-server-configs": "2.14.0",
     "archiver": "^0.21.0",
     "cssmin": "^0.4.3",
     "del": "^2.0.2",
@@ -60,4 +58,3 @@
     "url": "x"
   }
 }
- 

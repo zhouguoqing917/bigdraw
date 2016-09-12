@@ -22,7 +22,7 @@ router.all('/upload/base64Data', function (req, res, next) {
                 content: "error"
             });
         } else {
-            var url ='http://127.0.0.1/nodejs/photo/' + filename;
+            var url ='http://10.16.48.40/nodejs/photo/' + filename;
             console.log(url);
             res.send({
                 status: '200',
