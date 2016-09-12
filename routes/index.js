@@ -2,7 +2,7 @@ var express = require('express');
 var fs = require('fs');
 var path = require('path');
 var router = express.Router();
-
+var ROOT_PATH = path.normalize(path.join(__dirname, '../'));
 
 //保存base64图片POST方法
 router.all('/uploadBase64Data', function (req, res, next) {
@@ -14,7 +14,7 @@ router.all('/uploadBase64Data', function (req, res, next) {
 
     var uuid = new Date().getTime();
     var filename = "canvs-" + uuid + '.jpeg';
-    fs.writeFile( '/upload/photo/' + filename, dataBuffer, function (err) {
+    fs.writeFile( ROOT_PATH+'/public/photo/' + filename, dataBuffer, function (err) {
         if (err) {
             res.send({
                 status: '0',
