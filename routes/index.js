@@ -22,7 +22,7 @@ router.all('/uploadBase64Data', function (req, res, next) {
                 content: "error"
             });
         } else {
-            var url ='http://10.16.48.40/nodejs/photo/' + filename;
+            var url ='http://t.m.tv.sohu.com/nodejs/photo/' + filename;
             console.log(url);
             res.send({
                 status: '200',
@@ -35,6 +35,9 @@ router.all('/uploadBase64Data', function (req, res, next) {
 /* GET home page. */
 router.get('/', function (req, res, next) {
     res.render('index', {title: 'nodejs min Server'});
+});
+router.get('/testnjs', function (req, res, next) {
+    res.send({title: 'nodejs min Server'});
 });
 
 module.exports = router;
