@@ -5,7 +5,7 @@ var router = express.Router();
 var ROOT_PATH = path.normalize(path.join(__dirname, '../'));
 
 //保存base64图片POST方法
-router.all('/upload/base64Data', function (req, res, next) {
+router.all('/uploadBase64Data', function (req, res, next) {
     var imgData = req.body.imgData || '';
     var kind = req.body.kind;
     //过滤data:URL

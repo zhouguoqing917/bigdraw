@@ -1,7 +1,7 @@
 (function (root,$) {
     var vars = root.vars;
     var draw =  root.draw = {};
-    var uploadUrl = 'http://127.0.0.1/nodejs/upload/base64Data';
+    var uploadUrl = 'http://t.m.tv.sohu.com/nodejs/uploadBase64Data';
 
     var data={
          kind:3,
