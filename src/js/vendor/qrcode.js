@@ -1192,7 +1192,7 @@
       var canvas = document.createElement('canvas');
       var ctx = canvas.getContext('2d');
       var count = qrCodeAlg.getModuleCount();
-      // preload img
+      // preload photo
       var loadImage = function loadImage(url, callback) {
         var img = new Image();
         img.src = url;
@@ -1280,7 +1280,7 @@
         var x = ((width - options.imageSize) / 2).toFixed(2);
         var y = ((height - options.imageSize) / 2).toFixed(2);
         s.unshift('<div style=\'position:relative; \n                        width:' + width + 'px; \n                        height:' + height + 'px;\'>');
-        s.push('<img src=\'' + options.image + '\' \n                        width=\'' + options.imageSize + '\' \n                        height=\'' + options.imageSize + '\' \n                        style=\'position:absolute;left:' + x + 'px; top:' + y + 'px;\'>');
+        s.push('<photo src=\'' + options.image + '\' \n                        width=\'' + options.imageSize + '\' \n                        height=\'' + options.imageSize + '\' \n                        style=\'position:absolute;left:' + x + 'px; top:' + y + 'px;\'>');
         s.push('</div>');
       }
 

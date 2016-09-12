@@ -46,17 +46,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(allowCrossDomain);
-// set static file
-app.use(serveStatic(__dirname + '/public', {
-   maxAge: '1d',
-   setHeaders: setCustomCacheControl
-}));
 
-function setCustomCacheControl (res, path) {
-  if (serveStatic.mime.lookup(path) === 'text/html') {
-    res.setHeader('Cache-Control', 'public, max-age=0')
-  }
-}
+//static files
+app.use("/src",serveStatic(__dirname + '/src'));
+app.use(serveStatic(__dirname + '/public'));
+app.use(serveStatic(__dirname + '/upload'));
 
 app.use('/', routes);
 app.use('/users', users);

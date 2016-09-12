@@ -63,7 +63,7 @@
             $('.btn2').on('click', function () {
                 var sin = $('#sin').attr('data-sin');
                 var wd  = $('#sin_input').val();
-                draw.drawCanvas(wd,sin); //make img
+                draw.drawCanvas(wd,sin); //make photo
             });
         }
     };
@@ -76,13 +76,13 @@
                 var imgdata = vars.getLocalStorage('cvsImageData')|| vars.getParam('url')||'';
                 var imgUrl  = vars.getLocalStorage('cvsImageUrl')|| imgdata;
                 $('.dl-pic').attr('src',imgUrl);
-                self.events();
+                self.events(); 
                 window.initShareEvents({
                     'img_url': imgUrl,
                     'img_width': '100',
                     'img_height': '100',
                     'link': location.href,
-                    'desc': meta['og:desc']||'',
+                    'desc': '现在朋友圈流行这样装逼',
                     'title':  '朋友圈大字'
                 } );
             });
@@ -91,7 +91,7 @@
             $('.btn3').on('click', function () {
                 location.href = "index.html";
             });
-            
+
         }
     };
 

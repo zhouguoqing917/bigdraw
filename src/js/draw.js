@@ -1,6 +1,8 @@
 (function (root,$) {
     var vars = root.vars;
     var draw =  root.draw = {};
+    var uploadUrl = 'http://127.0.0.1/nodejs/upload/base64Data';
+
     var data={
          kind:3,
          keywd:"杨路好娘",
@@ -120,7 +122,7 @@
                 img.src = data.imageList[n];
                 console.log(data.imageList[n]);
                 img.onerror = function(){
-                    console.log('draw img load err');
+                    console.log('draw photo load err');
                     drawImg(n+1,kind);
                 };
                 img.onload=function(){
@@ -143,7 +145,7 @@
     };
 
     draw.upload = function (kind,base64Data,callback) {
-        var xUrl ='http://127.0.0.1/nodejs/upload';
+        var xUrl = uploadUrl;
         var submitData={
             imgData:base64Data,
             kind:kind

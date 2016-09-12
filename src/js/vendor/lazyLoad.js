@@ -27,7 +27,7 @@
             placeholder_data_img        : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC',
             // for IE6\7 that does not support data image
             //http://tv.sohu.com/upload/touch/img/blank1px.png
-            placeholder_real_img        : 'http://tv.sohu.com/upload/touch/img/placeholder.png'
+            placeholder_real_img        : 'http://tv.sohu.com/upload/touch/photo/placeholder.png'
 
         },
         type ;// function
@@ -210,7 +210,7 @@
                         originalSrcInAttr:
                         options.url_rewriter_fn.call(element,$element,originalSrcInAttr),
                     originalSrcset = $element.attr('data-'+options.data_srcset_attribute),
-                    isImg = $element.is('img');
+                    isImg = $element.is('photo');
 
                 if($element._lazyload_loadStarted == true || placeholderSrc == originalSrc){
                     $element._lazyload_loadStarted = true;
@@ -220,7 +220,7 @@
 
                 $element._lazyload_loadStarted = false;
 
-                // If element is an img and no src attribute given, use placeholder.
+                // If element is an photo and no src attribute given, use placeholder.
                 if(isImg && !placeholderSrc){
                     // For browsers that do not support data image.
                     $element.one('error',function(){ // `on` -> `one` : IE6 triggered twice error event sometimes
@@ -269,7 +269,7 @@
                             }
                             loadFunc()
                         }else{
-                            $('<img />').one('load', function(){ // `on` -> `one` : IE6 triggered twice load event sometimes
+                            $('<photo />').one('load', function(){ // `on` -> `one` : IE6 triggered twice load event sometimes
                                 loadFunc();
                                 if(options.load != emptyFn){
                                     options.load.call(element, $elements.length, options)
@@ -298,12 +298,12 @@
             }
 
             // Check if something appears when window is resized.
-            // Force initial check if images should appear when window is onload.
+            // Force initial check if photo should appear when window is onload.
             $window.on('resize load', function(){
                 throttleCheckAppear($elements, options)
             });
 
-            // Force initial check if images should appear.
+            // Force initial check if photo should appear.
             $(function(){
                 throttleCheckAppear($elements, options)
             });
