@@ -24,7 +24,7 @@ morgan.date = function getDateToken(req, res, format) {
 };
 // create morgan a rotating write stream access.log
 var accessLogStream = FileStreamRotator.getStream({
-  filename: '/data/logs/draw/access.%DATE%.log',
+  filename: 'logs/access.%DATE%.log',
   frequency: 'daily',
   date_format: "YYYYMMDD",
   verbose: false

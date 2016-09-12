@@ -20,7 +20,7 @@
     draw.drawCanvas = function (keywd,sin){
         console.log( keywd);
         var base64 = root.draw.base64;
-        data.kind = sin ||3;
+        var kind = data.kind = sin ||3;
         data.keywd = keywd || data.keywd;
         var p = parseInt(data.kind)-1;
         p = p>3?3:p<0?0:p;
@@ -31,8 +31,20 @@
         var cvs =document.createElement("canvas"),
             ct = cvs.getContext("2d"),
             len =  data.imageList.length;
-        cvs.width =464; //px
-        cvs.height=367;
+        if(kind ==1){
+            cvs.width =452; //px
+            cvs.height=303;
+        }else if(kind == 2) {
+            cvs.width =326; //px
+            cvs.height=367;
+        }else if(kind == 3) {
+            cvs.width =222; //px
+            cvs.height=357;
+        }else {
+            cvs.width =464; //px
+            cvs.height=351;
+        }
+
         ct.rect(0,0,cvs.width,cvs.height);
         ct.fillStyle='#fff';
         ct.fill();
@@ -45,56 +57,70 @@
                 ct.font='bold ' +fsz+'px arial,sans-serif ';
                 ct.fillStyle = color||'#C13E2C';
                 ct.textAlign = 'center';
-                ct.fillText(txt,x, y,367);
+                ct.fillText(txt,x, y);
             };
+            var mx=5;
             var txt1 = [];
-            var x=124,y=220;
+            var x=240,y=150;
            //context.fillText(text,x,y,maxWidth);
-
+            var txtarr = text.split('');
             if(kind==1) {
-                x = 240;
-                y = 150;
-                if (text.length > 5) {
-                    txt1[0] = text.substring(0, 5);
-                    txt1[1] = text.substring(5);
-                    fillText(txt1[0], x, y,32,'#000000');
-                    fillText(txt1[1], x, y + 60,32,'#000000');
-                } else {
-                    fillText(text, x, y,32,'#000000');
-                }
-            }else if(kind==2) {
-                    x = 240;
-                    y = 150;
-                    if (text.length > 5) {
-                        txt1[0] = text.substring(0,5);
-                        txt1[1] = text.substring(5);
-                        fillText(txt1[0],x,y,32,'#000000');
-                        fillText(txt1[1],x,y+60,32,'#000000');
-                    }else{
-                        fillText(text,x,y,32,'#000000');
+                x = 100;
+                y = 125;
+                for(var i=0;i<txtarr.length;i++) {
+                    var char = txtarr[i];
+                    if(i==mx) {
+                        //换行
+                        x=100;
+                        y=200;
                     }
+                    x+=46;
+                    fillText(char,x,y,44,'#000000');
+                }
+
+            }else if(kind==2) {
+                x = 35;
+                y = 125;
+                for(var i=0;i<txtarr.length;i++) {
+                    var char = txtarr[i];
+                    if(i==mx) {
+                        //换行
+                        x=35;
+                        y=200;
+                    }
+                    x+=44;
+                    fillText(char,x,y,42,'#C13E2C');
+                }
+
             }else if(kind==3) {
-                x=124;
-                y=220;
-                if (text.length > 5) {
-                    txt1[0] = text.substring(0,5);
-                    txt1[1] = text.substring(5);
-                    fillText(txt1[0],x,y,26,'#C13E2C');
-                    fillText(txt1[1],x,y+40,26,'#C13E2C');
-                }else{
-                    fillText(text,x,y,26,'#C13E2C');
+                x=135;
+                y=158;
+                for(var i=0;i<txtarr.length;i++){
+                    var char = txtarr[i];
+                    if(i==mx) {
+                        //换行
+                        x=84;
+                        y=158;
+                    }
+                    y+=30;
+                    fillText(char,x,y,28,'#C13E2C');
                 }
+
             }else if(kind==4) {
-                x = 320;
-                y = 165;
-                if (text.length > 5) {
-                    txt1[0] = text.substring(0,5);
-                    txt1[1] = text.substring(5);
-                    fillText(txt1[0],x,y,42,'#000000');
-                    fillText(txt1[1],x,y+40,42,'#000000');
-                }else{
-                    fillText(text,x,y,42,'#000000');
+                x = 220;
+                y = 140;
+                var txtarr = text.split('');
+                for(var i=0;i<txtarr.length;i++) {
+                    var char = txtarr[i];
+                    if(i==mx) {
+                        //换行
+                        x=220;
+                        y=198;
+                    }
+                    x+=38;
+                    fillText(char,x,y,36,'#000000');
                 }
+
             }else {
                 fillText(text,x,y);
             }
@@ -104,13 +130,13 @@
         function drawQrcode(pic,kind) {
             var x=400,y=300,w=50,h=50;
             if(kind==1) {
-                x =394; y = 233;
+                x =394; y = 244;
             }else if(kind==2){
-                x =344; y = 283;
+                x =271; y = 310;
             }else if(kind==3){
-                x= 185 ; y=300;
+                x= 164 ; y=306;
             }else if(kind==4) {
-                x= 190 ; y=305;
+                x= 201 ; y=293;
             }
             ct.drawImage(pic, x, y, w, h);
             return ct;

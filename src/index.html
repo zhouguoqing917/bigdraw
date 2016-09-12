@@ -16,8 +16,6 @@
             _self.widthProportion = function () {
                 var p = ((document.body && document.documentElement.clientWidth || document.getElementsByTagName("html")[0].offsetWidth ) / _self.width );
                 var px1 = (p * _self.fontSize).toFixed(4);
-                //console.log("px1 ="+px1);
-                px1 = px1 > 100 ? 100 : px1;
                 px1 = px1 < 0.08 ? 0.08 : px1;
                 return px1;
             };
