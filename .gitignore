@@ -1,9 +1,11 @@
 archive
 node_modules
 dist
-logs
+logs/access*
+logs/error*
 public/images/canvs*
 public/img/canvs*
+public/photo/canvs*
 upload/photo/canvs*
 .DS_Store
 .idea

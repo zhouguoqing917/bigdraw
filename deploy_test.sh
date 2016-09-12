@@ -5,6 +5,6 @@ dt=`date +%Y%m%d`
 echo $YDAY
 src=./dist
 tag=/opt/www/pages/upload/touch/bigdraw
-cd $src && cp -r * $tag/
+cd $src && cp -r * $tag/ && echo 'deploy oK'
 
 
