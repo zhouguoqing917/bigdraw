@@ -25,6 +25,8 @@
             });
         },
         evens:function () {
+
+
             $('#sin').on('click', function () {
                 var slc=$(this).attr('data-sin');
                 $(this).attr('class','sin sin'+slc);
@@ -32,16 +34,26 @@
                 $('#tin').show();
 
             });
+
             $('.ys-opts .ys').on('click', function () {
                 $('#tin').hide();
                 $('.dl-rlt').hide();
                 var slc = $(this).attr('data-sin');
                 var tips = $('#sin');
-                var sinClass=['sin' , 'sin'+slc , 'sin'+slc+'-tips'].join(' ');
+
+                var sinClass=['sin' , 'sin'+slc , 'sin'+slc+'-tips','flipInCardY'].join(' ');
                 tips.attr('class',sinClass);
                 tips.attr('data-sin',slc);
-                tips.show();
-                console.log(slc)
+                tips.removeClass().addClass(sinClass + ' animated').one(
+                    'webkitAnimationEnd ' +
+                    'mozAnimationEnd ' +
+                    'MSAnimationEnd ' +
+                    'oanimationend ' +
+                    'animationend ',
+                    function(){
+                        $(this).removeClass('flipInCardY');
+                    });
+
             });
 
             $(document.body).on('cvsImageData',function(evt,kind, bx64 ){
@@ -65,8 +77,15 @@
 
             $('.btn2').on('click', function () {
                 var sin = $('#sin').attr('data-sin');
-                var wd  = $('#sin_input').val();
-                draw.drawCanvas(wd,sin); //make photo
+                var wd  = $('#sin_input').val()||'';
+                if(wd) {
+                    if (wd.length > 10) {
+                        wd = wd.substring(1,10);
+                    }
+                    draw.drawCanvas(wd, sin); //make photo
+                }else{
+                    vars.showTip('请输入装逼内容',1000);
+                }
             });
 
             var checkCountChar = function () {

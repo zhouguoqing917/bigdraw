@@ -26,7 +26,7 @@
         var meta = data || getMetaData();
         var shareData = {
             'appid': '',
-            'img_url': meta['og:image']||meta['img_url']||'../photo/share.png',
+            'img_url': meta['og:image']||meta['img_url']||'',
             'img_width': '100',
             'img_height': '100',
             'link':meta['og:url']||meta['link']|| location.href,

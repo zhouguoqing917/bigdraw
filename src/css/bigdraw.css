@@ -74,10 +74,10 @@ h1, h2, h3, h4, h5, h6 {
     display: block;
     left: 0;
     top: 0;
-    margin: 0;
     padding: 0;
     width: 100%;
-    height: 5.14rem;
+    height: 5.04rem;
+    margin:0.10rem 0 0 0;
 }
 
 .sin {
@@ -86,7 +86,7 @@ h1, h2, h3, h4, h5, h6 {
     left: 0;
     top: 0;
     width: 100%;
-    height: 5.02rem;
+    height: 4.12rem;
     background-position: center top;
     background-repeat: no-repeat;
     background-size: 7.20rem 4.02rem;
@@ -183,7 +183,7 @@ input, select, textarea {
 .ys-opts {
     position: absolute;
     left: 0;
-    top: 4.42rem;
+    top: 4.24rem;
     width: 100%;
     height: 4.95rem;
     background-image: url(../img/2-ys.png);
@@ -214,7 +214,7 @@ input, select, textarea {
     display: -webkit-flex;
     width: 100%;
     height: 1.48rem;
-    top: 10.48rem;
+    top: 9.37rem;
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -345,3 +345,84 @@ input, select, textarea {
     padding: .43rem .2rem;
     background: rgba(0, 0, 0, .7);
 }
+
+
+.flipInCardY {
+
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+
+    -webkit-backface-visibility: visible !important;
+    backface-visibility: visible !important;
+    -webkit-animation-name: flipInY-key;
+    animation-name: flipInY-key;
+}
+
+@-webkit-keyframes flipInY-key {
+    from {
+        -webkit-transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
+        transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
+        -webkit-animation-timing-function: ease-in;
+        animation-timing-function: ease-in;
+        opacity: 0;
+    }
+
+    40% {
+        -webkit-transform: perspective(400px) rotate3d(0, 1, 0, -20deg);
+        transform: perspective(400px) rotate3d(0, 1, 0, -20deg);
+        -webkit-animation-timing-function: ease-in;
+        animation-timing-function: ease-in;
+    }
+
+    60% {
+        -webkit-transform: perspective(400px) rotate3d(0, 1, 0, 10deg);
+        transform: perspective(400px) rotate3d(0, 1, 0, 10deg);
+        opacity: 1;
+    }
+
+    80% {
+        -webkit-transform: perspective(400px) rotate3d(0, 1, 0, -5deg);
+        transform: perspective(400px) rotate3d(0, 1, 0, -5deg);
+    }
+
+    to {
+        -webkit-transform: perspective(400px);
+        transform: perspective(400px);
+    }
+}
+
+@keyframes flipInY-key {
+    from {
+        -webkit-transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
+        transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
+        -webkit-animation-timing-function: ease-in;
+        animation-timing-function: ease-in;
+        opacity: 0;
+    }
+
+    40% {
+        -webkit-transform: perspective(400px) rotate3d(0, 1, 0, -20deg);
+        transform: perspective(400px) rotate3d(0, 1, 0, -20deg);
+        -webkit-animation-timing-function: ease-in;
+        animation-timing-function: ease-in;
+    }
+
+    60% {
+        -webkit-transform: perspective(400px) rotate3d(0, 1, 0, 10deg);
+        transform: perspective(400px) rotate3d(0, 1, 0, 10deg);
+        opacity: 1;
+    }
+
+    80% {
+        -webkit-transform: perspective(400px) rotate3d(0, 1, 0, -5deg);
+        transform: perspective(400px) rotate3d(0, 1, 0, -5deg);
+    }
+
+    to {
+        -webkit-transform: perspective(400px);
+        transform: perspective(400px);
+    }
+}
+

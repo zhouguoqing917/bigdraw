@@ -5,7 +5,7 @@
 
     var data={
          kind:3,
-         keywd:"杨路好娘",
+         keywd:"",
          image:[
               "img/c1.jpg",  //kind=1
               "img/c2.jpg",  //kind=2
@@ -13,7 +13,7 @@
               "img/c4.jpg"   //kind=4
         ],
         imageList:[],
-        qrImage:"img/cm.jpg"
+        qrImage:"img/qr.png" //qrcode img
     };
     draw.base64 =[];
     draw.drawCanvas = function (keywd,sin){
@@ -120,7 +120,7 @@
                 var img=new Image();
                 img.crossOrigin = 'Anonymous'; //解决跨域
                 img.src = data.imageList[n];
-                console.log(data.imageList[n]);
+
                 img.onerror = function(){
                     console.log('draw photo load err');
                     drawImg(n+1,kind);
