@@ -96,7 +96,8 @@
                 bx64 = bx64 ||  vars.getLocalStorage('cvsImageData');
                 kind = kind ||  vars.getLocalStorage('cvsImageKind');
                 root.draw.upload(kind,bx64,function (rt) {
-                    console.log("upload rt ",JSONStringify(rt));
+                    rt=rt||{};
+                    console.log("upload rt ",JSON.stringify(rt));
                     var data = rt && rt.data || "";
                     var cbUrl= '';
                     if(data && data.url) {
