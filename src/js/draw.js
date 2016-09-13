@@ -83,7 +83,7 @@
                         y= y2;
                     }
                     ct.font='' +s+'px arial,sans-serif ';
-                    ct.fillStyle = c||'#C13E2C';
+                    ct.fillStyle = c||'#000000';
                     ct.textAlign = 'center';
                     ct.fillText(char,x, y);
                     if(kk==3) {
