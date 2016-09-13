@@ -18,8 +18,8 @@
         init:function () {
             var self = this;
             $(function () {
-                FastClick.attach(document.body);
-                $('.dl-rlt').hide();
+                FastClick.attach(document.body); 
+
                 self.evens();
 
             });
@@ -69,6 +69,7 @@
 
             $(document.body).on('cvsImageData',function(evt,kind, bx64 ){
                 bx64 = bx64 ||  vars.getLocalStorage('cvsImageData');
+                kind = kind ||  vars.getLocalStorage('cvsImageKind');
                 root.draw.upload(kind,bx64,function (rt) {
                     var data = rt && rt.data || "";
                     var cbUrl= bx64;
@@ -79,11 +80,9 @@
                     $('#sin').hide();
                     $('#tin').hide();
 
-                    //$('.dl-rlt').show(); //test
-                    //$('.dl-pic').attr('src',orgUrl);
                     // var _timer = setTimeout(function () {
 
-                        location.href = "rlt.html?url="+ cbUrl;
+                        location.href = "rlt.html?kind=" +kind+"&url="+ cbUrl;
 
                     // },0);
                 });
@@ -97,15 +96,13 @@
                         wd = wd.substring(1,10);
                     }
                     draw.drawCanvas(wd, sin); //make photo
-                }else{
-                    vars.showTip('请输入装逼内容',1000);
                 }
             });
 
             var checkCountChar = function () {
                 var txtAre =  $("#sin_input");
                 var x = txtAre.val().length;
-                if (x >= 10) {
+                if (x > 10) {
                     vars.showTip('最多输入10个字符',1000);
                 }
                 return x;
@@ -126,7 +123,10 @@
                 FastClick.attach(document.body);
                 var imgdata = vars.getLocalStorage('cvsImageData')||'';
                 var imgUrl  = vars.getLocalStorage('cvsImageUrl')|| vars.getParam('url') || imgdata;
-                $('.dl-pic').attr('src',imgUrl);
+                var kind    = vars.getLocalStorage('cvsImageKind')|| vars.getParam('kind') || 3;
+                var dlPic = $('#dl-pic');
+                dlPic.attr('src',imgUrl);
+                dlPic.removeClass().addClass('dl-pic dl-c'+kind);
                 self.events();
                 var indexpage = location.href;
                 indexpage = indexpage.replace('rlt.html','index.html');

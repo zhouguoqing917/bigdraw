@@ -63,9 +63,56 @@ h1, h2, h3, h4, h5, h6 {
     z-index: 113;
 
 }
+
 .btn1:hover {
     background-image: url(../img/bt1-2.png);
 }
+
+.pulse-btn {
+    -webkit-animation-name: pulse;
+    animation-name: pulse ;
+    -webkit-animation-duration: 1.5s ;
+    animation-duration: 1.5s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+}
+
+@-webkit-keyframes pulse {
+    from {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
+
+    50% {
+        -webkit-transform: scale3d(1.15, 1.15, 1.15);
+        transform: scale3d(1.15, 1.15, 1.15);
+    }
+
+    to {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
+}
+
+@keyframes pulse {
+    from {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
+
+    50% {
+        -webkit-transform: scale3d(1.15, 1.15, 1.15);
+        transform: scale3d(1.15, 1.15, 1.15);
+    }
+
+    to {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
+}
+
 
 
 /* create */
@@ -83,8 +130,9 @@ h1, h2, h3, h4, h5, h6 {
     padding: 0;
     width: 100%;
     height: 4.02rem;
-    margin:0.10rem 0 0 0;
+    margin: 0.10rem 0 0 0;
 }
+
 .sin-hd {
     position: absolute;
     display: block;
@@ -98,6 +146,7 @@ h1, h2, h3, h4, h5, h6 {
     background-image: url(../img/hd.png);
     z-index: 111;
 }
+
 .sin {
     position: absolute;
     display: block;
@@ -206,10 +255,10 @@ h1, h2, h3, h4, h5, h6 {
     height: 1.80rem;
 }
 
-
 input, select, textarea {
     outline: none;
 }
+
 /* default choice 3*/
 .ys-choice {
     position: absolute;
@@ -224,22 +273,27 @@ input, select, textarea {
     background-size: 0.52rem 0.52rem;
     z-index: 218;
 }
+
 .co1 {
     left: 2.89rem;
     top: 4.38rem;
 }
+
 .co2 {
     left: 2.62rem;
     top: 6.96rem;
 }
+
 .co3 {
     left: 5.63rem;
     top: 4.02rem;
 }
+
 .co4 {
     left: 5.93rem;
     top: 7.06rem;
 }
+
 .ys-opts {
     position: absolute;
     left: 0;
@@ -306,34 +360,44 @@ input, select, textarea {
     background-image: url(../img/3-dl.png);
 }
 
-
+/* imgurl from api url */
 .dl-pic {
-    position: absolute;
+    position: relative;
     display: block;
-    left: 2.26rem;
+    left: 0.9rem;
     top: 0.92rem;
     width: 4.64rem;
     height: 3.67rem;
+    margin: 0 auto;
     /* background-position: center top; */
     /* background-repeat: no-repeat; */
     /* background-size: 4.64rem 3.67rem; */
     z-index: 310;
+
 }
 
 .dl-c1 {
-    background-image: url(../img/c1.jpg);
+    /*background-image: url(../img/c1.png);*/
+    width: 4.52rem;
+    height: 3.03rem;
 }
 
 .dl-c2 {
-    background-image: url(../img/c2.jpg);
+    /*background-image: url(../img/c2.png);*/
+    width: 3.26rem;
+    height: 3.57rem;
 }
 
 .dl-c3 {
-    background-image: url(../img/c3.jpg);
+    /*background-image: url(../img/c3.png);*/
+    width: 2.22rem;
+    height: 3.57rem;
 }
 
 .dl-c4 {
-    background-image: url(../img/c4.jpg);
+    /*background-image: url(../img/c4.png);*/
+    width: 4.64rem;
+    height: 3.67rem;
 }
 
 .dl-tips {
@@ -406,7 +470,6 @@ input, select, textarea {
     padding: .43rem .2rem;
     background: rgba(0, 0, 0, .7);
 }
-
 
 .flipInCardY {
 

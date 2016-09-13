@@ -52,92 +52,70 @@
         function drawText(text,kind) {
             //text = text.replace(/[\s]/g,"");
             //相对于画布
-            fillText = function (txt,x,y,fsz,color) {
-                fsz =fsz||24;
-                ct.font='bold ' +fsz+'px arial,sans-serif ';
-                ct.fillStyle = color||'#C13E2C';
-                ct.textAlign = 'center';
-                ct.fillText(txt,x, y);
+            var tpos={
+                1:{ x1:100,y1:125, x2:100,y2:200,m:46,s:44 ,c:'#000000'},
+                2:{ x1:35,y1:125, x2:35,y2:200,m:44,s:42 ,c:'#C13E2C'},
+                3:{ x1:135,y1:158, x2:84,y2:158,m:30,s:28,c:'#C13E2C' },
+                4:{ x1:220,y1:140, x2:220,y2:198,m:38,s:36,c:'#000000'}
             };
-            var mx=5;
-            var txt1 = [];
-            var x=240,y=150;
-           //context.fillText(text,x,y,maxWidth);
-            var txtarr = text.split('');
-            if(kind==1) {
-                x = 100;
-                y = 125;
+
+            var fillText = function (txt,kk) {
+                kk=kk||3;
+                var obj=tpos[kk]||{};
+                var mx=5;
+                var x1 = obj.x1||135;
+                var y1 = obj.y1||158;
+                var x2 = obj.x2||84;
+                var y2 = obj.y2||158;
+                var m = obj.m||30;
+                var s = obj.s||28;
+                var c = obj.c||'#C13E2C';
+                var txtarr = txt.split('')||[];
+                var x =  x1;
+                var y =  y1;
                 for(var i=0;i<txtarr.length;i++) {
+
+                    if(i>=10) { break;}
                     var char = txtarr[i];
-                    if(i==mx) {
+                    if(i == mx) {
                         //换行
-                        x=100;
-                        y=200;
+                        x= x2;
+                        y= y2;
                     }
-                    x+=46;
-                    fillText(char,x,y,44,'#000000');
+                    if(kk==3) {
+                        y += m; //竖排
+                    }
+
+                    if(kk==1 || kk==2 ||kk==4 ) {
+                        x+= m; //横排
+                    }
+                    ct.font='bold ' +s+'px arial,sans-serif ';
+                    ct.fillStyle = c||'#C13E2C';
+                    ct.textAlign = 'center';
+                    ct.fillText(char,x, y);
                 }
 
-            }else if(kind==2) {
-                x = 35;
-                y = 125;
-                for(var i=0;i<txtarr.length;i++) {
-                    var char = txtarr[i];
-                    if(i==mx) {
-                        //换行
-                        x=35;
-                        y=200;
-                    }
-                    x+=44;
-                    fillText(char,x,y,42,'#C13E2C');
-                }
+            };
 
-            }else if(kind==3) {
-                x=135;
-                y=158;
-                for(var i=0;i<txtarr.length;i++){
-                    var char = txtarr[i];
-                    if(i==mx) {
-                        //换行
-                        x=84;
-                        y=158;
-                    }
-                    y+=30;
-                    fillText(char,x,y,28,'#C13E2C');
-                }
-
-            }else if(kind==4) {
-                x = 220;
-                y = 140;
-                var txtarr = text.split('');
-                for(var i=0;i<txtarr.length;i++) {
-                    var char = txtarr[i];
-                    if(i==mx) {
-                        //换行
-                        x=220;
-                        y=198;
-                    }
-                    x+=38;
-                    fillText(char,x,y,36,'#000000');
-                }
-
-            }else {
-                fillText(text,x,y);
-            }
+            //context.fillText(text,x,y,maxWidth);
             // ct.fillText('.',235+ct.measureText(text).width,60);
+
+            fillText(text,kind);
             return ct;
         }
-        function drawQrcode(pic,kind) {
-            var x=400,y=300,w=50,h=50;
-            if(kind==1) {
-                x =394; y = 244;
-            }else if(kind==2){
-                x =271; y = 310;
-            }else if(kind==3){
-                x= 164 ; y=306;
-            }else if(kind==4) {
-                x= 201 ; y=293;
-            }
+
+        function drawQrcode(pic,kk) {
+            kk = kk||3;
+            var w=60,h=60;
+            var ppos={
+                1:{ x1:384,y1:233 },
+                2:{ x1:260,y1:302 },
+                3:{ x1:158,y1:296 },
+                4:{ x1:196,y1:292 }
+            };
+            var p =ppos[kk]||{};
+            var x =p.x1;
+            var y =p.y1;
             ct.drawImage(pic, x, y, w, h);
             return ct;
         }
@@ -164,6 +142,7 @@
                 drawText(data.keywd,kind);
                 base64.push(cvs.toDataURL("image/jpeg"));
                 vars.setLocalStorage('cvsImageData', base64[0]);
+                vars.setLocalStorage('cvsImageKind',kind);
                 $(document.body).trigger('cvsImageData',[kind,base64[0]]);
 
             }
