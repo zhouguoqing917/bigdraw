@@ -105,7 +105,7 @@
                 var txtAre =  $("#sin_input");
                 var x = txtAre.val().length;
                 if (x >=10) {
-                    vars.showTip('最多输入10个字符',1000);
+                    vars.showTip('\u6700\u591a\u0031\u0030\u4e2a\u5b57\u7b26',1000);
                 }
                 return x;
             };
@@ -137,8 +137,8 @@
                     'img_width': '100',
                     'img_height': '100',
                     'link': indexpage,
-                    'desc': '现在朋友圈流行这样装逼',
-                    'title':  '朋友圈大字'
+                    'desc': '\u73b0\u5728\u670b\u53cb\u5708\u6d41\u884c\u8fd9\u6837\u88c5\u903c',
+                    'title':  '\u670b\u53cb\u5708\u5927\u5b57'
                 } );
             });
         },
@@ -148,6 +148,13 @@
             });
 
         }
+    };
+
+    bigdraw.parseToUnicodes = function(contents) {
+        contents = contents || '';
+        return contents.replace(/[\u4E00-\u9FFF\uF900-\uFAFF]/g,function(character){
+            return "\\u" + character.charCodeAt(0).toString(16);
+        });
     };
 
  root.bigdraw = bigdraw;
