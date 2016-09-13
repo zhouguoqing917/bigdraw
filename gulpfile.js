@@ -2,7 +2,7 @@ var fs = require('fs');
 var path = require('path');
 
 var gulp = require('gulp');
-var cssmin = require('gulp-clean-css'), 
+var cssmin = require('gulp-clean-css'),
     uglify = require('gulp-uglify');
 // Load all gulp plugins automatically
 // and attach them to the `plugins` object
@@ -11,7 +11,7 @@ var plugins = require('gulp-load-plugins')();
 // Temporary solution until gulp 4
 // https://github.com/gulpjs/gulp/issues/355
 var runSequence = require('run-sequence');
-
+var iconv = require('gulp-iconv');
 var pkg = require('./package.json');
 var dirs = pkg['h5bp-configs'].directories;
 var dataString = function() {
@@ -41,7 +41,7 @@ var dataString = function() {
     };
 var opts={};
 opts.date=dataString();
-var comment = '/*!\n' +  ' date:'+opts.date+ '\n'+ '*/\n'; 
+var comment = '/*!\n' +  ' date:'+opts.date+ '\n'+ '*/\n';
 var auto_pixer = ['last 2 versions', 'Android > 4.0', 'iOS > 6', 'Firefox >= 32', 'Chrome >= 32', 'ie >= 8',
     'ExplorerMobile > 9', '> 1%'
 ];
@@ -105,16 +105,16 @@ gulp.task('min:js', function() {
     return gulp.src([
             dirs.dist + '/js/**/*.js'
         ] )
-        .pipe(uglify(jsmincfg)) 
-        .pipe(gulp.dest(dirs.dist + '/js/')) 
+        .pipe(uglify(jsmincfg))
+        .pipe(gulp.dest(dirs.dist + '/js/'))
 });
 
 gulp.task('min:css', function() {
     return gulp.src([
             opts.dist + '/css/**/*.css'
         ] )
-        .pipe(cssmin()) 
-        .pipe(gulp.dest(opts.dist + '/css/')) 
+        .pipe(cssmin())
+        .pipe(gulp.dest(opts.dist + '/css/'))
 });
 
 gulp.task('clean', function (done) {
@@ -126,17 +126,17 @@ gulp.task('clean', function (done) {
     });
 });
 
-gulp.task('copy', [ 
-    'copy:misc' 
+gulp.task('copy', [
+    'copy:misc'
 ]);
-  
+
 gulp.task('copy:misc', function () {
-    return gulp.src([ 
+    return gulp.src([
         dirs.src + '/**/*' ])
 	.pipe(gulp.dest(dirs.dist));
 });
- 
- 
+
+
 gulp.task('archive', function (done) {
     runSequence(
         'build',
@@ -146,7 +146,7 @@ gulp.task('archive', function (done) {
 });
 
 gulp.task('build', function (done) {
-    runSequence(  ['clean'], 'copy','min:css','min:js', done);
+    runSequence(  ['clean'], 'copy','min:css','min:js','iconv', done);
 });
 
 gulp.task('default', ['build']);

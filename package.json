@@ -1,5 +1,5 @@
 {
- "dependencies": {
+  "dependencies": {
     "body-parser": "~1.15.1",
     "cookie-parser": "~1.4.3",
     "debug": "~2.2.0",
@@ -7,9 +7,9 @@
     "hbs": "~4.0.0",
     "morgan": "~1.7.0",
     "serve-favicon": "~2.3.0",
-    "serve-static":"1.11.1",
-    "response-time":"2.3.1",
-    "file-stream-rotator":"0.0.7"
+    "serve-static": "1.11.1",
+    "response-time": "2.3.1",
+    "file-stream-rotator": "0.0.7"
   },
   "devDependencies": {
     "archiver": "^0.21.0",
@@ -19,11 +19,12 @@
     "gulp": "^3.8.11",
     "gulp-autoprefixer": "^3.0.2",
     "gulp-clean": "^0.3.1",
+    "gulp-clean-css": "^2.0.12",
     "gulp-header": "^1.2.2",
+    "gulp-iconv": "0.0.1",
     "gulp-jscs": "^3.0.1",
     "gulp-jshint": "^2.0.0",
     "gulp-load-plugins": "^1.1.0",
-    "gulp-clean-css": "^2.0.12",
     "gulp-rename": "^1.2.0",
     "gulp-replace": "^0.5.3",
     "gulp-rev": "^6.0.1",
@@ -53,7 +54,7 @@
   "scripts": {
     "build": "gulp build",
     "test": "gulp archive && mocha --reporter spec --timeout 5000",
-     "start": "node ./bin/www"
+    "start": "node ./bin/www"
   },
   "homepage": "",
   "license": {

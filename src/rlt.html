@@ -1,19 +1,19 @@
 <!doctype html>
 <html data-rem="true" data-design="750">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=GBK"/>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
     <meta content="telephone=no" name="format-detection"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
-    <title>æœ‹å‹åœˆå¤§å­—</title>
-    <meta property="og:desc" content="ç°åœ¨æœ‹å‹åœˆæµè¡Œè¿™æ ·è£…é€¼"/>
+    <title>ÅóÓÑÈ¦´ó×Ö</title>
+    <meta property="og:desc" content="ÏÖÔÚÅóÓÑÈ¦Á÷ĞĞÕâÑù×°±Æ"/>
     <script type="text/javascript">
         (function(){
             var setFontSize = function () {
-                // è·å–window å®½åº¦,åŠ¨æ€è®¡ç®—
+                // »ñÈ¡window ¿í¶È,¶¯Ì¬¼ÆËã
                 var _self = this;
-                _self.width = 750;   //psd750pxå®½åº¦ ,default
-                _self.fontSize = 100;//å­—ä½“å¤§å°
+                _self.width = 750;   //psd750px¿í¶È ,default
+                _self.fontSize = 100;//×ÖÌå´óĞ¡
                 _self.widthProportion = function () {
                     var p = ((document.body && document.documentElement.clientWidth || document.getElementsByTagName("html")[0].offsetWidth ) / _self.width );
                     var px1 = (p * _self.fontSize).toFixed(4);
@@ -23,17 +23,16 @@
                 console.log("html fontSize: ",_self.widthProportion());
                 document.getElementsByTagName("html")[0].setAttribute("style", "font-size:" + _self.widthProportion() + "px; !important");
             };
-            // init åˆå§‹åŒ–
+            // init ³õÊ¼»¯
             setFontSize();
-            //æ‰‹æœºæ”¹å˜çŠ¶æ€æ—¶ä¹Ÿæ‰§è¡Œè¯¥æ–¹æ³•
             var _evt = 'onorientationchange' in window ? 'orientationchange' : 'resize';
             var _timer = null;
-            //android,winç³»åˆ—
+            //android,winÏµÁĞ
             window.addEventListener(_evt, function () {
                 clearTimeout(_timer);
                 _timer = setTimeout(setFontSize, 300);
             }, false);
-            //iosç³»åˆ—
+            //iosÏµÁĞ
             window.addEventListener("pageshow", function(e) {
                 if (e.persisted) {
                     clearTimeout(_timer);
@@ -62,5 +61,6 @@
 <script type="text/javascript">
     bigdraw.rlt.init();
 </script>
+<script type="text/javascript" src="http://pingjs.qq.com/h5/stats.js" name="MTAH5" sid="500306185" ></script>
 </body>
 </html>

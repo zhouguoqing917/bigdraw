@@ -1,14 +1,38 @@
 (function (root,$) {
     var vars = root.vars;
+
     var bigdraw ={};
     /* index */
     bigdraw.index ={
         init: function () {
             $(function () {
                 FastClick.attach(document.body);
+
+                MtaH5.clickStat('1'); //
+                var f=vars.getParam('f')||'';
+                if(f=='qr'){
+                    MtaH5.clickStat('qr');
+                }else{
+                    if(vars.IsWeixinBrowser){
+                        MtaH5.clickStat('weixin');
+                    }else if(vars.IsAndroid){
+                        MtaH5.clickStat('android');
+                    }else if(vars.IsIOS){
+                        MtaH5.clickStat('ios');
+                    }else{
+                        MtaH5.clickStat('other');
+                    }
+                }
+
                 $('.btn1').on('click', function () {
-                    location.href = "create.html";
+                    MtaH5.clickStat('c1');
+                    setTimeout(function () {
+                         location.href = "create.html";
+                    },250);
+
                 });
+
+
             });
         }
     };
@@ -19,13 +43,12 @@
             var self = this;
             $(function () {
                 FastClick.attach(document.body);
-
+                MtaH5.clickStat('2');
                 self.evens();
 
             });
         },
         evens:function () {
-
 
             $('#sin').on('click', function () {
                 var slc=$(this).attr('data-sin');
@@ -91,12 +114,14 @@
             });
 
             $('.btn2').on('click', function () {
-                var sin = $('#sin').attr('data-sin');
+                var sin = $('#sin').attr('data-sin')||3;
                 var wd  = $('#sin_input').val()||'';
                 if(wd) {
+                    MtaH5.clickStat('c2');
                     if (wd.length > 10) {
                         wd = wd.substring(1,10);
                     }
+                    MtaH5.clickStat('y'+3);
                     draw.drawCanvas(wd, sin); //make photo
                 }
             });
@@ -123,6 +148,7 @@
             var self = this;
             $(function () {
                 FastClick.attach(document.body);
+                MtaH5.clickStat('3');
                 var imgdata = vars.getLocalStorage('cvsImageData')||'';
                 var imgUrl  = vars.getLocalStorage('cvsImageUrl')|| vars.getParam('url') || imgdata;
                 var kind    = vars.getLocalStorage('cvsImageKind')|| vars.getParam('kind') || 3;
@@ -144,6 +170,7 @@
         },
         events:function () {
             $('.btn3').on('click', function () {
+                MtaH5.clickStat('c3');
                 location.href = "index.html";
             });
 

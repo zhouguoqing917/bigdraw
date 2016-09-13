@@ -1,18 +1,17 @@
 <!doctype html>
 <html data-rem="true" data-design="750">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=GBK"/>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
     <meta content="telephone=no" name="format-detection"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
-    <title>朋友圈大字</title>
+    <title>����Ȧ����</title>
     <script type="text/javascript">
         (function(){
             var setFontSize = function () {
-                // 获取window 宽度,动态计算
                 var _self = this;
-                _self.width = 750;   //psd750px宽度 ,default
-                _self.fontSize = 100;//字体大小
+                _self.width = 750;
+                _self.fontSize = 100;
                 _self.widthProportion = function () {
                     var p = ((document.body && document.documentElement.clientWidth || document.getElementsByTagName("html")[0].offsetWidth ) / _self.width );
                     var px1 = (p * _self.fontSize).toFixed(4);
@@ -22,17 +21,17 @@
                 console.log("html fontSize: ",_self.widthProportion());
                 document.getElementsByTagName("html")[0].setAttribute("style", "font-size:" + _self.widthProportion() + "px; !important");
             };
-            // init 初始化
+
             setFontSize();
-            //手机改变状态时也执行该方法
+
             var _evt = 'onorientationchange' in window ? 'orientationchange' : 'resize';
             var _timer = null;
-            //android,win系列
+
             window.addEventListener(_evt, function () {
                 clearTimeout(_timer);
                 _timer = setTimeout(setFontSize, 300);
             }, false);
-            //ios系列
+
             window.addEventListener("pageshow", function(e) {
                 if (e.persisted) {
                     clearTimeout(_timer);
@@ -53,8 +52,7 @@
         <div class="sin-hd"></div>
         <div id="sin" class="sin sin3 sin3-tips" data-sin="3"></div>
         <div id="tin" class="tin tin3">
-            <textarea id="sin_input" class="sin_input" name="content" rows="3" cols="20" placeholder=""
-                      title="输入内容"  maxlength = "10" ></textarea>
+            <textarea id="sin_input" class="sin_input" name="content" rows="3" cols="20" placeholder=""  maxlength="10" ></textarea>
         </div>
 
     </div>
@@ -72,7 +70,7 @@
 <script src="js/draw.js"></script>
 <script>
     bigdraw.create.init();
-
 </script>
+<script type="text/javascript" src="http://pingjs.qq.com/h5/stats.js" name="MTAH5" sid="500306185" ></script>
 </body>
 </html>
