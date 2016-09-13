@@ -18,7 +18,7 @@
         init:function () {
             var self = this;
             $(function () {
-                FastClick.attach(document.body); 
+                FastClick.attach(document.body);
 
                 self.evens();
 
@@ -42,6 +42,7 @@
                 $('.dl-rlt').hide();
                 var slc = $(this).attr('data-sin');
                 var tips = $('#sin');
+                $('#ys-choice').removeClass().addClass('ys-choice co'+slc);
                 $.each(ys, function (i, v) {
                     if(v==me){
                         $(me).addClass('current');
@@ -62,8 +63,6 @@
                     function(){
                         $(this).removeClass('flipInCardY');
                     });
-
-                $('#ys-choice').removeClass().addClass('ys-choice co'+slc);
 
             });
 
