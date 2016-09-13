@@ -150,17 +150,15 @@
                 FastClick.attach(document.body);
                 MtaH5.clickStat('3');
                 self.events();
-                setTimeout( function () {
-                    var imgdata = vars.getLocalStorage('cvsImageData')||'';
-                    var imgUrl  = vars.getLocalStorage('cvsImageUrl')|| vars.getParam('url') || imgdata;
-                    var kind    = vars.getLocalStorage('cvsImageKind')|| vars.getParam('kind') || 3;
-                    var dlPic = $('#dl-pic');
-                    dlPic.attr('src',imgUrl);
-                    dlPic.removeClass().addClass('dl-pic dl-c'+kind);
-                    var indexpage = location.href;
-                    indexpage = indexpage.replace('rlt.html','index.html');
-                    window.initShareEvents();
-                },250);
+                var imgdata = vars.getLocalStorage('cvsImageData')||'';
+                var imgUrl  = vars.getLocalStorage('cvsImageUrl')|| vars.getParam('url') || imgdata;
+                var kind    = vars.getLocalStorage('cvsImageKind')|| vars.getParam('kind') || 3;
+                var dlPic = $('#dl-pic');
+                dlPic.attr('src',imgUrl);
+                dlPic.removeClass().addClass('dl-pic dl-c'+kind);
+                var indexpage = location.href;
+                indexpage = indexpage.replace('rlt.html','index.html');
+                window.initShareEvents(); 
             });
         },
         events:function () {

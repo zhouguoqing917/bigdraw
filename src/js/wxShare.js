@@ -1,6 +1,6 @@
 /**
  *   @author: guoqingzhou
- *   Î¢ĞÅ·ÖÏíLite°æ
+ *   å¾®ä¿¡åˆ†äº«Liteç‰ˆ
  */
 ;(function(window) {
     "use strict";
@@ -8,19 +8,19 @@
     window.initShareEvents =function (data) {
         var shareData = window.shareData = {
             'appid': '',
-            'img_url': 'img/share-logo.jpg',
+            'img_url': 'http://shouji.sogou.com/sapp/bigdraw/img/share-logo.jpg',
             'img_width': '150',
             'img_height': '150',
             'link': location.href,
-            'desc':'Ò²ĞíÕâÊÇÅóÓÑÈ¦×îÕğº³µÄÍæ·¨£¡',
-            'title': 'ÅóÓÑÈ¦´ó×Ö'
+            'desc':'ä¹Ÿè®¸è¿™æ˜¯æœ‹å‹åœˆæœ€éœ‡æ’¼çš„ç©æ³•ï¼',
+            'title': 'æœ‹å‹åœˆå¤§å­—'
         };
         document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
-            WeixinJSBridge.on('menu:share:timeline', function (argv) {//·ÖÏíµ½ÅóÓÑÈ¦
+            WeixinJSBridge.on('menu:share:timeline', function (argv) {//åˆ†äº«åˆ°æœ‹å‹åœˆ
                 WeixinJSBridge.invoke('shareTimeline', window.shareData, function (res) {
                 });
             });
-            WeixinJSBridge.on('menu:share:appmessage', function (argv) {//·ÖÏí¸øÅóÓÑ
+            WeixinJSBridge.on('menu:share:appmessage', function (argv) {//åˆ†äº«ç»™æœ‹å‹
                 WeixinJSBridge.invoke('sendAppMessage', window.shareData, function (res) {
                 });
             });
