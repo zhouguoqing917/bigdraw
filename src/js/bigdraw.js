@@ -42,6 +42,7 @@
                 $('.dl-rlt').hide();
                 var slc = $(this).attr('data-sin');
                 var tips = $('#sin');
+
                 $('#ys-choice').attr('class','ys-choice co'+slc);
 
                 $.each(ys, function (i, v) {
@@ -52,9 +53,10 @@
                      }
                  });
 
-                var sinClass=['sin' , 'sin'+slc , 'sin'+slc+'-tips','animated','flipInCardY'].join(' ');
+                var sinClass=['sin' , 'sin'+slc , 'sin'+slc+'-tips','flipInCardY'].join(' ');
+                tips.attr('class',sinClass);
                 tips.attr('data-sin',slc);
-                tips.attr('class',sinClass).one(
+                tips.one(
                     'webkitAnimationEnd ' +
                     'mozAnimationEnd ' +
                     'MSAnimationEnd ' +
