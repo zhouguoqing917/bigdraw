@@ -1,8 +1,8 @@
 (function (root,$) {
     var vars = root.vars;
     var draw =  root.draw = {};
-    var uploadUrl = '/nodejs/uploadBase64Data';
-    // var uploadUrl = '/sapp/bigdraw/savepic.php';
+    //var uploadUrl = 'http://'+location.host+'/nodejs/uploadBase64Data';
+    var uploadUrl ='http://'+location.host+'/sapp/bigdraw/savepic.php';
 
     var data={
          kind:3,
@@ -154,15 +154,11 @@
         var xUrl = uploadUrl;
         var submitData={
             dosubmit:true,
-            imgData:base64Data,
+            pic:base64Data,
             kind:kind,
-            hostname:location.hostname
+            hostname:location.host
         };
-        // var submitData={
-        //     dosubmit:true,
-        //     pic:base64Data,
-        //     kind:kind
-        // };
+
         $.ajax({
             data: submitData,
             url: xUrl,

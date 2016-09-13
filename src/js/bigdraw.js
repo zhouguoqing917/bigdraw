@@ -42,7 +42,8 @@
                 $('.dl-rlt').hide();
                 var slc = $(this).attr('data-sin');
                 var tips = $('#sin');
-                $('#ys-choice').removeClass().addClass('ys-choice co'+slc);
+                $('#ys-choice').attr('class','ys-choice co'+slc);
+
                 $.each(ys, function (i, v) {
                     if(v==me){
                         $(me).addClass('current');
@@ -51,10 +52,9 @@
                      }
                  });
 
-                var sinClass=['sin' , 'sin'+slc , 'sin'+slc+'-tips','flipInCardY'].join(' ');
-                tips.attr('class',sinClass);
+                var sinClass=['sin' , 'sin'+slc , 'sin'+slc+'-tips','animated','flipInCardY'].join(' ');
                 tips.attr('data-sin',slc);
-                tips.removeClass().addClass(sinClass + ' animated').one(
+                tips.attr('class',sinClass).one(
                     'webkitAnimationEnd ' +
                     'mozAnimationEnd ' +
                     'MSAnimationEnd ' +
@@ -70,6 +70,7 @@
                 bx64 = bx64 ||  vars.getLocalStorage('cvsImageData');
                 kind = kind ||  vars.getLocalStorage('cvsImageKind');
                 root.draw.upload(kind,bx64,function (rt) {
+                    console.log("upload rt ",rt);
                     var data = rt && rt.data || "";
                     var cbUrl= bx64;
                     if(data && data.url) {
@@ -101,7 +102,7 @@
             var checkCountChar = function () {
                 var txtAre =  $("#sin_input");
                 var x = txtAre.val().length;
-                if (x > 10) {
+                if (x >=10) {
                     vars.showTip('最多输入10个字符',1000);
                 }
                 return x;
