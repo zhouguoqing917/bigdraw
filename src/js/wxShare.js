@@ -4,40 +4,17 @@
  */
 ;(function(window) {
     "use strict";
-    window.getShareData =function(data) {
-        var getMetaData = function () {
-            //解析meta data
-            var o = document.getElementsByTagName("meta");
-            var rlt = {};
-            for (var i = 0; i < o.length; i++) {
-                var vn = o[i].getAttribute('name');
-                var vp = o[i].getAttribute('property');
-                var vl = o[i].getAttribute('content') || "";
-                if (vn == null || vn == undefined || vn.length == 0) {
-                    vn = vp;
-                }
-                if (vn == null || vn == undefined || vn.length == 0) {
-                    continue;
-                }
-                rlt[vn] = vl;
-            }
-            return rlt;
-        };
-        var meta = data || getMetaData();
-        var shareData = {
-            'appid': '',
-            'img_url': meta['og:image']||meta['img_url']||'',
-            'img_width': '100',
-            'img_height': '100',
-            'link':meta['og:url']||meta['link']|| location.href,
-            'desc': meta['og:desc']||meta['desc']||'现在朋友圈流行这样装逼',
-            'title':meta['og:title']||meta['title']|| '朋友圈大字'
-        };
-        return shareData;
-    };
 
     window.initShareEvents =function (data) {
-        window.shareData = window.getShareData(data);
+        var shareData = window.shareData = {
+            'appid': '',
+            'img_url': 'img/share-logo.jpg',
+            'img_width': '150',
+            'img_height': '150',
+            'link': location.href,
+            'desc':'也许这是朋友圈最震撼的玩法！',
+            'title': '朋友圈大字'
+        };
         document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
             WeixinJSBridge.on('menu:share:timeline', function (argv) {//分享到朋友圈
                 WeixinJSBridge.invoke('shareTimeline', window.shareData, function (res) {

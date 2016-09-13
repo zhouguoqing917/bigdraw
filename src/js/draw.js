@@ -51,7 +51,7 @@
 
         function drawText(text,kind) {
             //text = text.replace(/[\s]/g,"");
-            //Áõ∏ÂØπ‰∫éÁîªÂ∏É
+            //œ‡∂‘”⁄ª≠≤º
             var tpos={
                 1:{ x1:52,y1:59, x2:52,y2:112,m:46,s:44 ,c:'#000000'},
                 2:{ x1:38,y1:118, x2:38,y2:176,m:46,s:44 ,c:'#000000'},
@@ -78,7 +78,7 @@
                     if(i>=10) { break;}
                     var char = txtarr[i];
                     if(i == mx) {
-                        //Êç¢Ë°å
+                        //ªª––
                         x= x2;
                         y= y2;
                     }
@@ -87,11 +87,11 @@
                     ct.textAlign = 'center';
                     ct.fillText(char,x, y);
                     if(kk==3) {
-                        y += m; //Á´ñÊéí
+                        y += m; // ˙≈≈
                     }
 
                     if(kk==1 || kk==2 ||kk==4 ) {
-                        x+= m; //Ê®™Êéí
+                        x+= m; //∫·≈≈
                     }
                 }
 
@@ -123,7 +123,7 @@
         function drawImg(n,kind){
             if(n<len){
                 var img=new Image();
-                img.crossOrigin = 'Anonymous'; //Ëß£ÂÜ≥Ë∑®Âüü
+                img.crossOrigin = 'Anonymous'; //Ω‚æˆøÁ”Ú
                 img.src = data.imageList[n];
 
                 img.onerror = function(){
