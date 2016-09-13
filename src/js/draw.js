@@ -32,17 +32,17 @@
             ct = cvs.getContext("2d"),
             len =  data.imageList.length;
         if(kind ==1){
-            cvs.width =452; //px
-            cvs.height=303;
+            cvs.width =288; //px
+            cvs.height=193;
         }else if(kind == 2) {
-            cvs.width =326; //px
-            cvs.height=367;
+            cvs.width =272; //px
+            cvs.height=298;
         }else if(kind == 3) {
-            cvs.width =222; //px
-            cvs.height=357;
+            cvs.width =398; //px
+            cvs.height=640;
         }else {
-            cvs.width =464; //px
-            cvs.height=351;
+            cvs.width =600; //px
+            cvs.height=454;
         }
 
         ct.rect(0,0,cvs.width,cvs.height);
@@ -51,25 +51,25 @@
 
         function drawText(text,kind) {
             //text = text.replace(/[\s]/g,"");
-            //œ‡∂‘”⁄ª≠≤º
+            //Áõ∏ÂØπ‰∫éÁîªÂ∏É
             var tpos={
-                1:{ x1:100,y1:125, x2:100,y2:200,m:46,s:44 ,c:'#000000'},
-                2:{ x1:35,y1:125, x2:35,y2:200,m:44,s:42 ,c:'#C13E2C'},
-                3:{ x1:135,y1:158, x2:84,y2:158,m:30,s:28,c:'#C13E2C' },
-                4:{ x1:220,y1:140, x2:220,y2:198,m:38,s:36,c:'#000000'}
+                1:{ x1:52,y1:59, x2:52,y2:112,m:46,s:44 ,c:'#000000'},
+                2:{ x1:38,y1:118, x2:38,y2:176,m:46,s:44 ,c:'#000000'},
+                3:{ x1:245,y1:334, x2:151,y2:334,m:64,s:62,c:'#000000' },
+                4:{ x1:320,y1:185, x2:320,y2:272,m:54,s:52,c:'#000000'}
             };
 
             var fillText = function (txt,kk) {
                 kk=kk||3;
                 var obj=tpos[kk]||{};
                 var mx=5;
-                var x1 = obj.x1||135;
-                var y1 = obj.y1||158;
-                var x2 = obj.x2||84;
-                var y2 = obj.y2||158;
-                var m = obj.m||30;
-                var s = obj.s||28;
-                var c = obj.c||'#C13E2C';
+                var x1 = obj.x1||245;
+                var y1 = obj.y1||334;
+                var x2 = obj.x2||151;
+                var y2 = obj.y2||334;
+                var m = obj.m||64;
+                var s = obj.s||62;
+                var c = obj.c||'#000000';
                 var txtarr = txt.split('')||[];
                 var x =  x1;
                 var y =  y1;
@@ -78,21 +78,21 @@
                     if(i>=10) { break;}
                     var char = txtarr[i];
                     if(i == mx) {
-                        //ªª––
+                        //Êç¢Ë°å
                         x= x2;
                         y= y2;
                     }
-                    if(kk==3) {
-                        y += m; // ˙≈≈
-                    }
-
-                    if(kk==1 || kk==2 ||kk==4 ) {
-                        x+= m; //∫·≈≈
-                    }
-                    ct.font='bold ' +s+'px arial,sans-serif ';
+                    ct.font='' +s+'px arial,sans-serif ';
                     ct.fillStyle = c||'#C13E2C';
                     ct.textAlign = 'center';
                     ct.fillText(char,x, y);
+                    if(kk==3) {
+                        y += m; //Á´ñÊéí
+                    }
+
+                    if(kk==1 || kk==2 ||kk==4 ) {
+                        x+= m; //Ê®™Êéí
+                    }
                 }
 
             };
@@ -106,12 +106,12 @@
 
         function drawQrcode(pic,kk) {
             kk = kk||3;
-            var w=60,h=60;
+            var w=50,h=50;
             var ppos={
-                1:{ x1:384,y1:233 },
-                2:{ x1:260,y1:302 },
-                3:{ x1:158,y1:296 },
-                4:{ x1:196,y1:292 }
+                1:{ x1:204,y1:130 },
+                2:{ x1:200,y1:227 },
+                3:{ x1:322,y1:560 },
+                4:{ x1:270,y1:388 }
             };
             var p =ppos[kk]||{};
             var x =p.x1;
@@ -123,7 +123,7 @@
         function drawImg(n,kind){
             if(n<len){
                 var img=new Image();
-                img.crossOrigin = 'Anonymous'; //Ω‚æˆøÁ”Ú
+                img.crossOrigin = 'Anonymous'; //Ëß£ÂÜ≥Ë∑®Âüü
                 img.src = data.imageList[n];
 
                 img.onerror = function(){

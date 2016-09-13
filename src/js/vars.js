@@ -58,18 +58,18 @@
 
     /**
      * @memberOf URL
-     * @summary å‘æŒ‡å®šurlä¸­æ·»åŠ å¤šä¸ªå‚æ•°
+     * @summary ÏòÖ¸¶¨urlÖĞÌí¼Ó¶à¸ö²ÎÊı
      * @type {function}
-     * @param {string} url                      - æŒ‡å®šurlé“¾æ¥
-     * @param {string|object} param             - ä¸ºstringæ—¶,paramè¡¨ç¤ºkeyï¼Œparam2æ ‡å¿—value; objectæ—¶ï¼Œå¿½ç•¥param2ï¼Œå°†å¯¹è±¡ä¸­æ‰€æœ‰å±æ€§æ·»åŠ åˆ°urlä¸­
-     * @param {string} param2                   - å½“paramä¸ºstringæ—¶ç”Ÿæ•ˆï¼Œæ ‡å¿—value
+     * @param {string} url                      - Ö¸¶¨urlÁ´½Ó
+     * @param {string|object} param             - ÎªstringÊ±,param±íÊ¾key£¬param2±êÖ¾value; objectÊ±£¬ºöÂÔparam2£¬½«¶ÔÏóÖĞËùÓĞÊôĞÔÌí¼Óµ½urlÖĞ
+     * @param {string} param2                   - µ±paramÎªstringÊ±ÉúĞ§£¬±êÖ¾value
      * @return {string}
      */
     vars.setParams = function (url, param, param2) {
-        //åªæ·»åŠ 1ä¸ªå‚æ•°
+        //Ö»Ìí¼Ó1¸ö²ÎÊı
         if (typeof param === 'string' && typeof param2 !== 'undefined') {
             return vars.setParam(url, param, param2);
-            //æ·»åŠ å¤šä¸ªå‚æ•°
+            //Ìí¼Ó¶à¸ö²ÎÊı
         } else if (typeof param === 'object') {
             for (var i in param) {
                 url = vars.setParam(url, i, param[i]);
@@ -145,7 +145,7 @@
     vars.AdrPadRegex = /pad|XiaoMi\/MiPad|lepad|YOGA|MediaPad|GT-P|SM-T|GT-N5100|sch-i800|HUAWEI\s?[MTS]\d+-\w+|Nexus\s7|Nexus\s8|Nexus\s11|Kindle Fire HD|Tablet|tab/i;
     /**
      * @memberof VARS
-     * @summary è®¾å¤‡å±å¹•è±¡ç´ å¯†åº¦
+     * @summary Éè±¸ÆÁÄ»ÏóËØÃÜ¶È
      * @type {number}
      */
     vars.PixelRatio = function () {
@@ -165,11 +165,11 @@
     }();
     /**
      * @memberof VARS
-     * @summary æ˜¯å¦æ˜¯androd pad
+     * @summary ÊÇ·ñÊÇandrod pad
      * @type {boolean}
      */
     vars.IsAndroidPad = function () {
-        //å®‰å“padæ­£åˆ™
+        //°²×¿padÕıÔò
         var padScreen = 1;
         var _IsAndroidPad = false;
         var ScreenSizeCorrect = 1;
@@ -179,18 +179,18 @@
             }
         }
         var _ratio = ScreenSizeCorrect || 1;
-        //åƒç´ 
+        //ÏñËØ
         var sw = Math.floor(window.screen.width * _ratio);
         var sh = Math.floor(window.screen.height * _ratio);
         var inch = 1;
         try {
-            //å¯¹è§’çº¿é•¿åº¦å¤§äº
+            //¶Ô½ÇÏß³¤¶È´óÓÚ
             padScreen = parseFloat(Math.sqrt(sw * sw + sh * sh));
-            //å°ºå¯¸
+            //³ß´ç
             inch = parseFloat(padScreen / (160 * vars.PixelRatio));
         } catch (e) {
         }
-        // å¯¹è§’çº¿é•¿åº¦å¤§äº1280 åˆ™ä¸ºPad
+        // ¶Ô½ÇÏß³¤¶È´óÓÚ1280 ÔòÎªPad
         if (!!('ontouchstart' in window) && vars.IsAndroid) {
             var adrPad = !!(vars.AdrPadRegex.test(vars.UA));
 
@@ -202,7 +202,7 @@
                 if (adrPad &&  !/coolpad/i.test(vars.UA) ) {
                     _IsAndroidPad = true;
                 } else {
-                    // å¯¹è§’çº¿é•¿åº¦å¤§äº 2500 ,inch > 7.0  åˆ™ä¸ºPad
+                    // ¶Ô½ÇÏß³¤¶È´óÓÚ 2500 ,inch > 7.0  ÔòÎªPad
                     if (!_IsAndroidPad && (padScreen >= 2500 || inch > 7.0)) {
                         _IsAndroidPad = true;
                     }
@@ -216,7 +216,7 @@
     vars.openTime = vars.IsIOS ? 800 : 1000;
     vars.IsWeixinBrowser = !!(window['WeixinJSBridge'] || /MicroMessenger/i.test(vars.UA));
 
-    vars.ENABLE_DEBUG = false;//alert å¼€å…³
+    vars.ENABLE_DEBUG = false;//alert ¿ª¹Ø
 
     vars.setCookie = function (name, value, expire, domain) {
         var expires = '';
@@ -233,10 +233,10 @@
 
     /**
      * @memberof Cookie
-     * @summary è¯»å–æŒ‡å®šçš„Cookie
+     * @summary ¶ÁÈ¡Ö¸¶¨µÄCookie
      * @type {function}
-     * @param {String} name è¦è·å–çš„Cookieåç§°
-     * @return {String} å¯¹åº”çš„Cookieå€¼ï¼Œå¦‚æœä¸å­˜åœ¨ï¼Œè¿”å›{null}
+     * @param {String} name Òª»ñÈ¡µÄCookieÃû³Æ
+     * @return {String} ¶ÔÓ¦µÄCookieÖµ£¬Èç¹û²»´æÔÚ£¬·µ»Ø{null}
      */
     vars.getCookie = function (name) {
         var arrCookie = document.cookie.split(';'),
@@ -279,7 +279,7 @@
 
     /**
      * @memberof Util
-     * @summary å°†jsonå­—ç¬¦ä¸²è½¬æ¢æˆjsonå¯¹è±¡
+     * @summary ½«json×Ö·û´®×ª»»³Éjson¶ÔÏó
      * @type {function}
      * @return {string}                        - uuid
      */
@@ -318,7 +318,7 @@
 
     /**
      * @memberof Util
-     * @summary å°†jsonå¯¹è±¡è½¬æ¢æˆjsonå­—ç¬¦ä¸²
+     * @summary ½«json¶ÔÏó×ª»»³Éjson×Ö·û´®
      * @type {function}
      * @return {string}                        - uuid
      */
@@ -362,7 +362,7 @@
                     });
                     rst = '{' + arr.join(',') + '}';
                 }
-            //functionç›´æ¥æ— è§†
+            //functionÖ±½ÓÎŞÊÓ
             }
         }
 
@@ -371,10 +371,10 @@
 
     /**
      * @memberof Cookie
-     * @summary è®¾ç½®sessionStorage
+     * @summary ÉèÖÃsessionStorage
      * @type {function}
-     * @param {string} name                             - å‚æ•°åç§°
-     * @param {string} value                            - å‚æ•°å€¼
+     * @param {string} name                             - ²ÎÊıÃû³Æ
+     * @param {string} value                            - ²ÎÊıÖµ
      */
     vars.setSession = function (name, value) {
         try {
@@ -388,9 +388,9 @@
 
     /**
      * @memberof Cookie
-     * @summary è·å–sessionStorage
+     * @summary »ñÈ¡sessionStorage
      * @type {function}
-     * @param {string} name                             - å‚æ•°åç§°
+     * @param {string} name                             - ²ÎÊıÃû³Æ
      * @return {string}
      */
     vars.getSession = function (name) {
@@ -478,10 +478,10 @@
     };
 
      /**
-      *   æ‰‹æœºç«¯æ˜¾ç¤ºæç¤ºå¼¹æ¡†ï¼š
+      *   ÊÖ»ú¶ËÏÔÊ¾ÌáÊ¾µ¯¿ò£º
       *   tip.showTip(
-      *   text,    //ï¼ˆå¿…ï¼‰æç¤ºæ–‡æœ¬å†…å®¹
-      *   milliSec //ï¼ˆå¯ï¼‰milliSecæ¯«ç§’åè‡ªåŠ¨å…³é—­æç¤ºå¼¹æ¡†
+      *   text,    //£¨±Ø£©ÌáÊ¾ÎÄ±¾ÄÚÈİ
+      *   milliSec //£¨¿É£©milliSecºÁÃëºó×Ô¶¯¹Ø±ÕÌáÊ¾µ¯¿ò
       *   );
       */
      var Tip = {

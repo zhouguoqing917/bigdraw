@@ -6,14 +6,13 @@
     <meta content="telephone=no" name="format-detection"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
     <title>朋友圈大字</title>
-    <meta property="og:desc" content="现在朋友圈流行这样装逼"/>
     <script type="text/javascript">
         (function(){
             var setFontSize = function () {
-                // 获取window 宽度,动态计算
+
                 var _self = this;
-                _self.width = 750;   //psd750px宽度 ,default
-                _self.fontSize = 100;//字体大小
+                _self.width = 750;
+                _self.fontSize = 100;
                 _self.widthProportion = function () {
                     var p = ((document.body && document.documentElement.clientWidth || document.getElementsByTagName("html")[0].offsetWidth ) / _self.width );
                     var px1 = (p * _self.fontSize).toFixed(4);
@@ -23,16 +22,16 @@
                 console.log("html fontSize: ",_self.widthProportion());
                 document.getElementsByTagName("html")[0].setAttribute("style", "font-size:" + _self.widthProportion() + "px; !important");
             };
-            // init 初始化
+
             setFontSize();
             var _evt = 'onorientationchange' in window ? 'orientationchange' : 'resize';
             var _timer = null;
-            //android,win系列
+
             window.addEventListener(_evt, function () {
                 clearTimeout(_timer);
                 _timer = setTimeout(setFontSize, 300);
             }, false);
-            //ios系列
+
             window.addEventListener("pageshow", function(e) {
                 if (e.persisted) {
                     clearTimeout(_timer);
@@ -58,9 +57,10 @@
 <script src="js/vars.js"></script>
 <script src="js/wxShare.js"></script>
 <script src="js/bigdraw.js"></script>
+<script type="text/javascript" src="http://pingjs.qq.com/h5/stats.js" name="MTAH5" sid="500306185" ></script>
 <script type="text/javascript">
     bigdraw.rlt.init();
 </script>
-<script type="text/javascript" src="http://pingjs.qq.com/h5/stats.js" name="MTAH5" sid="500306185" ></script>
+
 </body>
 </html>

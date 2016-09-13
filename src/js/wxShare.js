@@ -1,12 +1,12 @@
 /**
  *   @author: guoqingzhou
- *   å¾®ä¿¡åˆ†äº«Liteç‰ˆ
+ *   Î¢ĞÅ·ÖÏíLite°æ
  */
 ;(function(window) {
     "use strict";
     window.getShareData =function(data) {
         var getMetaData = function () {
-            //è§£æmeta data
+            //½âÎömeta data
             var o = document.getElementsByTagName("meta");
             var rlt = {};
             for (var i = 0; i < o.length; i++) {
@@ -30,8 +30,8 @@
             'img_width': '100',
             'img_height': '100',
             'link':meta['og:url']||meta['link']|| location.href,
-            'desc': meta['og:desc']||meta['desc']||'ç°åœ¨æœ‹å‹åœˆæµè¡Œè¿™æ ·è£…é€¼',
-            'title':meta['og:title']||meta['title']|| 'æœ‹å‹åœˆå¤§å­—'
+            'desc': meta['og:desc']||meta['desc']||'ÏÖÔÚÅóÓÑÈ¦Á÷ĞĞÕâÑù×°±Æ',
+            'title':meta['og:title']||meta['title']|| 'ÅóÓÑÈ¦´ó×Ö'
         };
         return shareData;
     };
@@ -39,11 +39,11 @@
     window.initShareEvents =function (data) {
         window.shareData = window.getShareData(data);
         document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
-            WeixinJSBridge.on('menu:share:timeline', function (argv) {//åˆ†äº«åˆ°æœ‹å‹åœˆ
+            WeixinJSBridge.on('menu:share:timeline', function (argv) {//·ÖÏíµ½ÅóÓÑÈ¦
                 WeixinJSBridge.invoke('shareTimeline', window.shareData, function (res) {
                 });
             });
-            WeixinJSBridge.on('menu:share:appmessage', function (argv) {//åˆ†äº«ç»™æœ‹å‹
+            WeixinJSBridge.on('menu:share:appmessage', function (argv) {//·ÖÏí¸øÅóÓÑ
                 WeixinJSBridge.invoke('sendAppMessage', window.shareData, function (res) {
                 });
             });

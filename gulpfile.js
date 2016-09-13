@@ -146,7 +146,7 @@ gulp.task('archive', function (done) {
 });
 
 gulp.task('build', function (done) {
-    runSequence(  ['clean'], 'copy','min:css','min:js','iconv', done);
+    runSequence(  ['clean'], 'copy','min:css','min:js', done);
 });
 
 gulp.task('default', ['build']);

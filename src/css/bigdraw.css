@@ -234,14 +234,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .p2 {
-    left: 3.42rem;
+    left: 3.22rem;
     top: 1.32rem;
-    width: 2.22rem;
+    width: 2.58rem;
     height: 1.82rem;
 }
 
 .p3 {
-
+    font: 14px Arial, sans-serif;
     left: 3.54rem;
     top: 1.82rem;
     width: 1.80rem;
@@ -249,10 +249,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .p4 {
+    font: 18px Arial, sans-serif;
     left: 4.26rem;
-    top: 1.18rem;
-    width: 1.80rem;
-    height: 1.80rem;
+    top: 0.98rem;
+    width: 2.5rem;
+    height: 1.82rem;
 }
 
 input, select, textarea {
@@ -266,7 +267,7 @@ input, select, textarea {
     width: 0.52rem;
     height: 0.52rem;
     left: 5.63rem;
-    top: 4.02rem;
+    top: 4.28rem;
     background-image: url(../img/choice.png);
     background-position: center top;
     background-repeat: no-repeat;
@@ -286,7 +287,7 @@ input, select, textarea {
 
 .co3 {
     left: 5.63rem;
-    top: 4.18rem;
+    top: 4.28rem;
 }
 
 .co4 {
@@ -378,25 +379,26 @@ input, select, textarea {
 
 .dl-c1 {
     /*background-image: url(../img/c1.png);*/
-    width: 4.52rem;
-    height: 3.03rem;
+    width: 4.62rem;
+    height: 3.13rem;
+    top: 1.20rem;
 }
 
 .dl-c2 {
     /*background-image: url(../img/c2.png);*/
-    width: 3.26rem;
-    height: 3.57rem;
+    width: 3.72rem;
+    height: 3.58rem;
 }
 
 .dl-c3 {
     /*background-image: url(../img/c3.png);*/
-    width: 2.22rem;
-    height: 3.57rem;
+    width: 2.32rem;
+    height: 3.67rem;
 }
 
 .dl-c4 {
     /*background-image: url(../img/c4.png);*/
-    width: 4.64rem;
+    width: 4.84rem;
     height: 3.67rem;
 }
 
