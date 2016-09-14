@@ -1,16 +1,14 @@
 /**
  *   @author: guoqingzhou
  */
-;(function(window) {
+;(function(window,$) {
     "use strict";
     var wxShare = function (shareData) {
-
         var isWx = !! (window['WeixinJSBridge'] || /MicroMessenger/i.test(window.navigator.userAgent));
         if (!isWx){
             console.log('use wxShare 请用微信客户端打开');
             return 0;
         }
-
         window.getShareData = function(data) {
             var getMetaData = function () {
                 //解析meta data
@@ -46,33 +44,30 @@
 
         window.wxShareData = window.getShareData(shareData);
 
-        // ==============================
-        var shareContent = {
-            title: wxShareData.title || document.title,
-            desc: wxShareData.desc || '',
-            link: wxShareData.link|| wxShareData.url || location.href,
-            imgUrl: wxShareData.imgUrl ||wxShareData.img_url || '',
-            type: wxShareData.type || '',
-            dataUrl: wxShareData.dataUrl || ''
-        };
         //config
         var _config = {
             debug: false,
-            url:window.location.href.replace(window.location.hash,''),
+            url: encodeURIComponent(window.location.href.replace(window.location.hash,'')),
             signature:'',
             jsApiList: [
                 'onMenuShareTimeline',
                 'onMenuShareAppMessage',
                 'onMenuShareQQ',
                 'onMenuShareWeibo',
-                'onMenuShareQZone',
-                'hideOptionMenu',
-                'showOptionMenu'
+                'onMenuShareQZone'
             ]
         };
 
-        // ==============================
-        window.wxJsVerify = function(res) {
+        $(document.body).on('getWxconfig',function (evt,res) {
+            var shareContent = {
+                title: wxShareData.title || document.title,
+                desc: wxShareData.desc || '',
+                link: wxShareData.link|| wxShareData.url || location.href,
+                imgUrl: wxShareData.imgUrl ||wxShareData.img_url || '',
+                type: wxShareData.type || '',
+                dataUrl: wxShareData.dataUrl || ''
+            };
+
             if(typeof(wx) !='undefined' && res && res.signature && res.appId){
                 _config.appId=res.appId;
                 _config.timestamp=res.timestamp;
@@ -89,36 +84,32 @@
                     wx.onMenuShareWeibo(shareContent);
                 });
 
-            }else{
-                if(typeof(wx) =='undefined'){
-                    console.log('未加载文件 http://res.wx.qq.com/open/js/jweixin-1.1.0.js');
-                }else{
-                    console.log('服务端验证签名错误');
-                }
-                if(typeof(WeixinJSBridge) !='undefined' ) {
-                    WeixinJSBridge.on('menu:share:timeline', function (argv) {
-                        WeixinJSBridge.invoke('shareTimeline', window.wxShareData, function (res) {
-                        });
-                    });
-                    WeixinJSBridge.on('menu:share:appmessage', function (argv) {
-                        WeixinJSBridge.invoke('sendAppMessage', window.wxShareData, function (res) {
-                        });
-                    });
-                }
             }
-        };
+        }); 
 
-        (function() {
-            var hp = ('https:' === document.location.protocol) ? 'https://' : 'http://';
+        var addWxcfg = function(callback) {
+            var ajaxUrl ='http://shouji.sogou.com/api/weixin/jssdk/wxconfig.php?rurl=' + _config.url+"&_rd="+ (new Date().getTime());
             var s = document.createElement('script');
-            var ajaxUrl = hp +'m.tv.sohu.com/wxauth/jsticket/signature?callback=wxJsVerify&url=' + _config.url+"&_rd="+ (new Date().getTime()); //or wxJsVerify
             console.log(ajaxUrl);
             s.src = ajaxUrl;
+            var done = false;
+            s.onload = s.onreadystatechange = function() {
+                if (!done && (!this.readyState || this.readyState !== 'loading')) {
+                    done = true;
+                    if (callback) callback.apply(null, []);
+                    s.onload = s.onreadystatechange = null;
+                }
+            };
             document.body.appendChild(s);
-        })();
+        };
+
+        addWxcfg(function () {
+            var wxconfig = window['wxconfig'] || '';
+            $(document.body).trigger('getWxconfig',wxconfig);
+        });
 
     };
     window.wxShare = wxShare;
     window.initShareEvents = wxShare;
 
-}(window));
+}(window,window.Zepto));
