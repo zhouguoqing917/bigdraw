@@ -28,7 +28,7 @@
                     MtaH5.clickStat('c1');
                     setTimeout(function () {
                          location.href = "create.html";
-                    },250);
+                    },60);
 
                 });
 
@@ -97,11 +97,14 @@
                 kind = kind ||  vars.getLocalStorage('cvsImageKind');
                 root.draw.upload(kind,bx64,function (rt) {
                     rt=rt||{};
-                    console.log("upload rt ",JSON.stringify(rt));
+
                     var data = rt && rt.data || "";
                     var cbUrl= '';
                     if(data && data.url) {
                         cbUrl = data.url || '';
+                        console.log("upload rt ",JSON.stringify(rt));
+                    }else{
+                        console.log("upload rt error ",JSON.stringify(rt));
                     }
                     vars.setLocalStorage('cvsImageUrl',cbUrl);
                     $('#sin').hide();
@@ -109,7 +112,7 @@
 
                      setTimeout(function () {
                         location.href = "rlt.html?kind=" +kind+"&url="+ cbUrl;
-                     },100);
+                     },60);
                 });
             });
 
@@ -158,7 +161,7 @@
                 dlPic.removeClass().addClass('dl-pic dl-c'+kind);
                 var indexpage = location.href;
                 indexpage = indexpage.replace('rlt.html','index.html');
-                window.initShareEvents(); 
+                window.initShareEvents();
             });
         },
         events:function () {
